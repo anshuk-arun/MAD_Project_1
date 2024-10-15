@@ -1,71 +1,7 @@
 import 'package:flutter/material.dart';
+import 'EntryScreen.dart';
 
 void main() {
   runApp(const MindfulApp());
 }
 
-class MindfulApp extends StatelessWidget {
-  const MindfulApp({super.key});
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: const EntryScreen(title: 'MAD_Project1_Mindfulness'),
-    );
-  }
-}
-
-class EntryScreen extends StatefulWidget {
-  const EntryScreen({super.key, required this.title});
-
-
-  final String title;
-
-  @override
-  State<EntryScreen> createState() => _EntryScreenState();
-}
-
-class _EntryScreenState extends State<EntryScreen> {
-
-  // debug, to show button works. just initial, it'll go away later.
-  int count = 0;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'G1_Madp1_Mindfulness App : count $count',
-            ),
-            const Text(
-              'This is EntryScreen'
-            ),
-            ElevatedButton(
-              onPressed: (){
-                setState(() {
-                  count += 1;
-                });
-              },
-              onLongPress: (){
-                setState(() {
-                  // HomeScreen();
-                  count *= 2;  
-                });
-              },
-              child: const Text('Go to Home Screen'),
-            ),
-          ],
-        ),
-      ),
-      
-    );
-  }
-}
