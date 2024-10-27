@@ -36,7 +36,6 @@ class _EntryScreenState extends State<EntryScreen> {
 
   // debug, to show button works. just initial, it'll go away later.
   int count = 0;
-
   @override
   Widget build(BuildContext context) {
 
