@@ -73,7 +73,7 @@ class _EntryScreenState extends State<EntryScreen> {
                   openHomeScreen();
                 });
               },
-              child: const Text('Go to Home Screen'),
+              child: const Text('Short Press Counter | Long Press HomeScreen'),
             ),
           ],
         ),
