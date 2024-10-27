@@ -21,29 +21,29 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
-    // Navigate to Mindfulness when clicked
-    void openMindfulnessScreen(){
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => MindfulnessScreen())
-      ); 
-    }
 
-    // Navigate to Stress Reduction when clicked
-    void openStressReduceScreen(){
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => StressReduceScreen())
-      ); 
-    }
-
-    // Navigate to Calendar when clicked
-    void openCalendarScreen(){
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => CalendarScreen())
-      ); 
-    }
+    // Currently not in use, but it may be needed later, depending.
+    // // Navigate to Mindfulness when clicked
+    // void openMindfulnessScreen(){
+    //   Navigator.push(
+    //     context,
+    //     MaterialPageRoute(builder: (context) => MindfulnessScreen())
+    //   ); 
+    // }
+    // // Navigate to Stress Reduction when clicked
+    // void openStressReduceScreen(){
+    //   Navigator.push(
+    //     context,
+    //     MaterialPageRoute(builder: (context) => StressReduceScreen())
+    //   ); 
+    // }
+    // // Navigate to Calendar when clicked
+    // void openCalendarScreen(){
+    //   Navigator.push(
+    //     context,
+    //     MaterialPageRoute(builder: (context) => CalendarScreen())
+    //   ); 
+    // }
 
     return Scaffold(
       bottomNavigationBar: NavigationBar(
@@ -164,46 +164,6 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
 
       ][currentPageIndex]
-      // appBar: AppBar(
-      //   title: const Text('HomeScreen Mindfulness'),
-      // ),
-      // body: Center(
-      //   child: Column(
-      //     mainAxisAlignment: MainAxisAlignment.center,
-      //     children: <Widget>[
-
-      //       Row(
-      //         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      //         children: [
-      //           ElevatedButton(
-      //             onPressed: (){
-      //               setState(){
-      //                 openMindfulnessScreen();
-      //               };
-      //             },
-      //             child: const Text('Mindfulness Screen'),
-      //           ),
-      //           ElevatedButton(
-      //             onPressed: (){
-      //               setState(){
-      //                 openStressReduceScreen();
-      //               };
-      //             },
-      //             child: const Text('Stress Reduction Screen'),
-      //           ),
-      //         ],
-      //       ),
-
-      //       ElevatedButton(
-      //         onPressed: (){
-      //           setState(){
-      //             openCalendarScreen();
-      //           };
-      //         },
-      //         child: const Text('Calendar Screen'),
-      //       ),
-
-
     );
   }
 
