@@ -1,9 +1,9 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:madp1_mindfulness/CalendarScreen.dart';
-import 'package:madp1_mindfulness/MindfulnessScreen.dart';
-import 'package:madp1_mindfulness/StressReduceScreen.dart';
+// import 'package:madp1_mindfulness/CalendarScreen.dart';
+// import 'package:madp1_mindfulness/MindfulnessScreen.dart';
+// import 'package:madp1_mindfulness/StressReduceScreen.dart';
 
 void main(){}
 
@@ -37,6 +37,14 @@ class _HomeScreenState extends State<HomeScreen> {
 
     });
   }
+
+  List<String> stressTechniques = <String>[
+    "Exercise",
+    "Deep Breathing",
+    "Listen to Music", 
+    "Get Enough Sleep",
+    "Meditation",
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -142,7 +150,7 @@ class _HomeScreenState extends State<HomeScreen> {
           reverse: true,
           itemCount: 5,
           itemBuilder: (BuildContext context, int index) {
-            if (index == 0) {
+            if (index % 2 == 0){
               return Align(
                 alignment: Alignment.centerRight,
                 child: Container(
@@ -153,88 +161,34 @@ class _HomeScreenState extends State<HomeScreen> {
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                   child: Text(
-                    'Excercise',
+                    stressTechniques[index],
                     style: theme.textTheme.bodyLarge!
                         .copyWith(color: theme.colorScheme.onPrimary),
                   ),
                 ),
               );
             }
-            if (index == 1){
-            return Align(
-              alignment: Alignment.centerLeft,
-              child: Container(
-                margin: const EdgeInsets.all(8.0),
-                padding: const EdgeInsets.all(8.0),
-                decoration: BoxDecoration(
-                  color: Colors.lightBlue,
-                  borderRadius: BorderRadius.circular(8.0),
+            if (index % 2 == 1){
+              return Align(
+                alignment: Alignment.centerLeft,
+                child: Container(
+                  margin: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(8.0),
+                  decoration: BoxDecoration(
+                    color: Colors.lightBlue,
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  child: Text(
+                    stressTechniques[index],
+                    style: theme.textTheme.bodyLarge!
+                        .copyWith(color: theme.colorScheme.onPrimary),
+                  ),
                 ),
-                child: Text(
-                  'Deep Breathing',
-                  style: theme.textTheme.bodyLarge!
-                      .copyWith(color: theme.colorScheme.onPrimary),
-                ),
-              ),
-            );
-            }
-            if (index == 2){
-            return Align(
-              alignment: Alignment.centerRight,
-              child: Container(
-                margin: const EdgeInsets.all(8.0),
-                padding: const EdgeInsets.all(8.0),
-                decoration: BoxDecoration(
-                  color: Colors.lightBlue,
-                  borderRadius: BorderRadius.circular(8.0),
-                ),
-                child: Text(
-                  'Listen to Music',
-                  style: theme.textTheme.bodyLarge!
-                      .copyWith(color: theme.colorScheme.onPrimary),
-                ),
-              ),
-            );
-            }
-            if (index == 3){
-            return Align(
-              alignment: Alignment.centerLeft,
-              child: Container(
-                margin: const EdgeInsets.all(8.0),
-                padding: const EdgeInsets.all(8.0),
-                decoration: BoxDecoration(
-                  color: Colors.lightBlue,
-                  borderRadius: BorderRadius.circular(8.0),
-                ),
-                child: Text(
-                  'Get Enough Sleep',
-                  style: theme.textTheme.bodyLarge!
-                      .copyWith(color: theme.colorScheme.onPrimary),
-                ),
-              ),
-            );
-            }
-            if (index == 4){
-            return Align(
-              alignment: Alignment.centerRight,
-              child: Container(
-                margin: const EdgeInsets.all(8.0),
-                padding: const EdgeInsets.all(8.0),
-                decoration: BoxDecoration(
-                  color: Colors.lightBlue,
-                  borderRadius: BorderRadius.circular(8.0),
-                ),
-                child: Text(
-                  'Meditation',
-                  style: theme.textTheme.bodyLarge!
-                      .copyWith(color: theme.colorScheme.onPrimary),
-                ),
-              ),
-            );
+              );
             }
           },
         ),
-        // Calendar
+        
         // Exit Back
         Center(
           child: FloatingActionButton(
