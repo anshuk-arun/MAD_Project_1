@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:madp1_mindfulness/HomeScreen.dart';
-
-// void main(){
-//   runApp(const MindfulApp());
-// }
+import 'HomeScreen.dart';
 
 class MindfulApp extends StatelessWidget {
   const MindfulApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     ThemeData swatchColor = ThemeData(
@@ -19,7 +14,7 @@ class MindfulApp extends StatelessWidget {
     return MaterialApp(
       title: "Mindful App",
       theme: swatchColor,
-      home: const EntryScreen(title: 'Entry Screen'),
+      home: const EntryScreen(title: 'Mindfulness Entry'),
     );
   }
 }
@@ -32,21 +27,39 @@ class EntryScreen extends StatefulWidget {
   State<EntryScreen> createState() => _EntryScreenState();
 }
 
-class _EntryScreenState extends State<EntryScreen> {
+class _EntryScreenState extends State<EntryScreen> with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _animation;
 
-  // debug, to show button works. just initial, it'll go away later.
-  int count = 0;
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: const Duration(seconds: 2),
+      vsync: this,
+    )..repeat(reverse: true);
+
+    _animation = Tween<double>(begin: 1.0, end: 1.1).animate(
+      CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  // Function to navigate to HomeScreen
+  void openHomeScreen() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const HomeScreen(title: 'Home')),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-
-    // Navigate to HomeScreen when clicked
-    void openHomeScreen(){
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => HomeScreen(title: ''))
-      ); 
-    }
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -56,29 +69,32 @@ class _EntryScreenState extends State<EntryScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'G1_Madp1_Mindfulness App : count $count',
+            const Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Text(
+                'G1_Madp1_Mindfulness App',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
             ),
-            const Text(
-              'This is EntryScreen'
-            ),
-            ElevatedButton(
-              onPressed: (){
-                setState(() {
-                  count += 1;
-                });
-              },
-              onLongPress: (){
-                setState(() {  
-                  openHomeScreen();
-                });
-              },
-              child: const Text('Short Press Counter | Long Press HomeScreen'),
+            const SizedBox(height: 20),
+            ScaleTransition(
+              scale: _animation,
+              child: ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                  });
+                },
+                onLongPress: openHomeScreen,
+                style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                  textStyle: const TextStyle(fontSize: 16),
+                ),
+                child: const Text('Long Press to Enter'),
+              ),
             ),
           ],
         ),
       ),
-      
     );
   }
 }
